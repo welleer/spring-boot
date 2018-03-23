@@ -20,13 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/live")
 public class HelloController {
 
+    @Value("${liwei}")
+    String msg;
     @Autowired
     Girl girl;
 
 //    @RequestMapping(value = {"/hello","/hi"},method = RequestMethod.GET)
     @GetMapping(value = {"/hello","/hi"})
     public String say(@RequestParam(value = "id",required = false, defaultValue = "0") Integer id){
-        return id+"_________"+girl.getSize()+">>>hello<<<"+girl.getAge();
+        return this.msg + id+"_________"+girl.getSize()+">>>hello<<<"+girl.getAge();
     }
 //    @RequestMapping(value = {"/{id}/hello","/hi"},method = RequestMethod.GET)
 //    public String say(@PathVariable("id") Integer id){
@@ -38,4 +40,5 @@ public class HelloController {
 //        return "index";
 ////        return girl.getSize()+">>>hello<<<"+girl.getAge();
 //    }
+
 }

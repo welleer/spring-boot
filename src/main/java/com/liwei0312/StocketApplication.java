@@ -1,14 +1,10 @@
-package com.example;
+package com.liwei0312;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 @SpringBootApplication
-public class GirlApplication {
+public class StocketApplication {
 
 	public static void main(String[] args) {
 //		int i = 1;
@@ -34,7 +30,7 @@ public class GirlApplication {
 ////		str ="abc";
 //		System.out.println("String"+str);
 
-
+//
 //		ExecutorService cachedThreadPool = Executors.newScheduledThreadPool(5);
 //
 //		for (int i = 0; i < 5; i++) {
@@ -54,32 +50,32 @@ public class GirlApplication {
 //					Thread.interrupted();
 //				}
 //			});
-//			cachedThreadPool.execute(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					System.out.println(Thread.currentThread().getName());
-//					System.out.println("good"+index*2);
-//				}
-//			});
-//			cachedThreadPool.execute(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					System.out.println(Thread.currentThread().getName());
-//					System.out.println("good"+index*2);
-//				}
-//			});
-//			cachedThreadPool.execute(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					System.out.println(Thread.currentThread().getName());
-//					System.out.println("good"+index*2);
-//				}
-//			});
+////			cachedThreadPool.execute(new Runnable() {
+////
+////				@Override
+////				public void run() {
+////					System.out.println(Thread.currentThread().getName());
+////					System.out.println("good"+index*2);
+////				}
+////			});
+////			cachedThreadPool.execute(new Runnable() {
+////
+////				@Override
+////				public void run() {
+////					System.out.println(Thread.currentThread().getName());
+////					System.out.println("good"+index*2);
+////				}
+////			});
+////			cachedThreadPool.execute(new Runnable() {
+////
+////				@Override
+////				public void run() {
+////					System.out.println(Thread.currentThread().getName());
+////					System.out.println("good"+index*2);
+////				}
+////			});
 //		}
 
-		SpringApplication.run(GirlApplication.class, args);
+		SpringApplication.run(StocketApplication.class, args);
 	}
 }
