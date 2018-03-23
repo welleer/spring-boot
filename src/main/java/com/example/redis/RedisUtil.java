@@ -1,8 +1,10 @@
 package com.example.redis;
 
+import org.thymeleaf.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.util.Pool;
 
 /**
  * Created by dell on 2018/3/9.
@@ -20,7 +22,7 @@ public final class RedisUtil {
 
     //可用连接实例的最大数目，默认值为8；
     //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
-    private static int MAX_ACTIVE = 1024;
+    private static int MAX_ACTIVE = 10;
 
     //控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
     private static int MAX_IDLE = 200;
@@ -34,6 +36,8 @@ public final class RedisUtil {
     private static boolean TEST_ON_BORROW = true;
 
     private static JedisPool jedisPool = null;
+
+    private static final String OK = "OK";
 
     /**
      * 初始化Redis连接池
@@ -84,4 +88,45 @@ public final class RedisUtil {
         }
     }
 
+    public static boolean set(String key,String value){
+        boolean result = false;
+//        Pool<Jedis> pool = getJedisPool();
+//        if (pool == null) {
+//            return result;
+//        }
+        Jedis jedis = getJedis();
+        try {
+            if (value != null) {
+                String rtn = jedis.set(key, value);
+                if (StringUtils.equals(OK, rtn)) {
+                    result = true;
+                }
+            }
+        } catch (Exception e) {
+            result = false;
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
+
+    public static String get(String key){
+        String result = "";
+//        Pool<Jedis> pool = getJedisPool();
+//        if (pool == null) {
+//            return result;
+//        }
+        Jedis jedis = getJedis();
+        try {
+            if (key != null) {
+                String rtn = jedis.get(key);
+                result = rtn;
+            }
+        } catch (Exception e) {
+            result = null;
+        } finally {
+            jedisPool.returnResource(jedis);
+        }
+        return result;
+    }
 }

@@ -21,15 +21,15 @@ public class RedisController {
     @GetMapping(value = {"/set"})
     public String setRedis(@RequestParam(value = "key",required = false) String key,
                            @RequestParam(value = "value",required = false) String value){
-        redis = RedisUtil.getJedis();
-        redis.set(key,value);
+//        redis = RedisUtil.getJedis();
+        RedisUtil.set(key,value);
         return key+"_________"+value;
     }
     //    @RequestMapping(value = {"/hello","/hi"},method = RequestMethod.GET)
     @GetMapping(value = {"/get"})
     public String getRedis(@RequestParam(value = "key",required = false) String key){
-        redis = RedisUtil.getJedis();
-        String value =redis.get(key);
+//        redis = RedisUtil.getJedis();
+        String value =RedisUtil.get(key);
         return key+"_________"+value;
     }
 }
