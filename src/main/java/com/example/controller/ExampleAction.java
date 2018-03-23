@@ -1,5 +1,6 @@
-package com.example;
+package com.example.controller;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by dell on 2018/3/21.
  */
 @Controller
+//@Scope("prototype") //spring开启多例
 public class ExampleAction {
     private int singletonInt=1;
     @RequestMapping(value = "/test")
