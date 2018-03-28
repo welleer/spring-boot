@@ -14,35 +14,41 @@ public class GirlApplication1 {
 	public static void main(String[] args) {
 		ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 		System.out.println("------------------------------");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
+			System.out.println("当前是"+ "-------"+i);
 			final int index = i;
 			try {
-				Thread.sleep(index * 100);
+				if (i==3) {
+					Thread.yield();
+				}else{
+					Thread.sleep(index * 100);
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
-			scheduledThreadPool.schedule(new Runnable() {
-
-				@Override
-				public void run() {
-					System.out.println("delay 3 seconds");
-				}
-			}, 3, TimeUnit.SECONDS);
-
-//
-//			cachedThreadPool.execute(new Runnable() {
+//			ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
+//			scheduledThreadPool.schedule(new Runnable() {
 //
 //				@Override
 //				public void run() {
-//					System.out.println(index);
-//					Map map=Thread.getAllStackTraces();
-//					System.out.println("当前线程数量"+map.size());
-////					System.out.println("当前线程数量"+Thread.activeCount());
-//					System.out.println("当前activeCount线程数量"+Thread.activeCount());
-////					Thread.stop();
+//					System.out.println(Thread.currentThread().getName());
+//					System.out.println("delay 3 seconds"+ "-------"+index);
 //				}
-//			});
+//			}, 3, TimeUnit.SECONDS);
+
+
+			cachedThreadPool.execute(new Runnable() {
+
+				@Override
+				public void run() {
+					System.out.println(index);
+					Map map=Thread.getAllStackTraces();
+					System.out.println("当前线程数量"+map.size());
+//					System.out.println("当前线程数量"+Thread.activeCount());
+					System.out.println("当前activeCount线程数量"+Thread.activeCount());
+//					Thread.stop();
+				}
+			});
 //			cachedThreadPool.execute(new Runnable() {
 //
 //				@Override
