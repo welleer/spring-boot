@@ -26,6 +26,7 @@ public class SpringWebSocketHandler implements WebSocketHandler {
     @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
         System.out.println(webSocketMessage.getPayload());
+        webSocketSession.sendMessage(new TextMessage(webSocketMessage.getPayload().toString()));
     }
 
     /**
