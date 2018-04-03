@@ -12,20 +12,20 @@ import java.util.concurrent.TimeUnit;
 public class GirlApplication1 {
 
 	public static void main(String[] args) {
-		ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-		System.out.println("------------------------------");
-		for (int i = 0; i < 5; i++) {
-			System.out.println("当前是"+ "-------"+i);
-			final int index = i;
-			try {
-				if (i==3) {
-					Thread.yield();
-				}else{
-					Thread.sleep(index * 100);
-				}
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+//		ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+//		System.out.println("------------------------------");
+//		for (int i = 0; i < 5; i++) {
+//			System.out.println("当前是"+ "-------"+i);
+//			final int index = i;
+//			try {
+//				if (i==3) {
+//					Thread.yield();
+//				}else{
+//					Thread.sleep(index * 100);
+//				}
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 //			ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
 //			scheduledThreadPool.schedule(new Runnable() {
 //
@@ -37,18 +37,6 @@ public class GirlApplication1 {
 //			}, 3, TimeUnit.SECONDS);
 
 
-			cachedThreadPool.execute(new Runnable() {
-
-				@Override
-				public void run() {
-					System.out.println(index);
-					Map map=Thread.getAllStackTraces();
-					System.out.println("当前线程数量"+map.size());
-//					System.out.println("当前线程数量"+Thread.activeCount());
-					System.out.println("当前activeCount线程数量"+Thread.activeCount());
-//					Thread.stop();
-				}
-			});
 //			cachedThreadPool.execute(new Runnable() {
 //
 //				@Override
@@ -73,7 +61,19 @@ public class GirlApplication1 {
 ////					Thread.stop();
 //				}
 //			});
-		}
+//			cachedThreadPool.execute(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					System.out.println(index);
+//					Map map=Thread.getAllStackTraces();
+//					System.out.println("当前线程数量"+map.size());
+////					System.out.println("当前线程数量"+Thread.activeCount());
+//					System.out.println("当前activeCount线程数量"+Thread.activeCount());
+////					Thread.stop();
+//				}
+//			});
+//		}
 
 
 
@@ -99,13 +99,13 @@ public class GirlApplication1 {
 //		System.out.println(a == e);//true
 //
 //
-//		String wholeNameLine = "com.liwei0319.Test1";
-//		String wholeNamePoint = "com.liwei0319.Test2";
-//		System.out.println("下面是测试Classloader的效果");
-//		testClassloader(wholeNameLine, wholeNamePoint);
-//		System.out.println("----------------------------------");
-//		System.out.println("下面是测试Class.forName的效果");
-//		testForName(wholeNameLine, wholeNamePoint);
+		String wholeNameLine = "com.liwei0319.Test1";
+		String wholeNamePoint = "com.liwei0319.Test2";
+		System.out.println("下面是测试Classloader的效果");
+		testClassloader(wholeNameLine, wholeNamePoint);
+		System.out.println("----------------------------------");
+		System.out.println("下面是测试Class.forName的效果");
+		testForName(wholeNameLine, wholeNamePoint);
 	}
 
 	/**

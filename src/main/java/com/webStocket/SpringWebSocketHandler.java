@@ -3,6 +3,8 @@ package com.webStocket;
 import org.apache.log4j.Logger;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
@@ -12,15 +14,18 @@ import java.util.ArrayList;
 /**
  * Created by dell on 2018/3/9.
  */
-public class SpringWebSocketHandler extends TextWebSocketHandler {
+public class SpringWebSocketHandler implements WebSocketHandler {
+
     private static final ArrayList<WebSocketSession> users;//这个会出现性能问题，最好用Map来存储，key用userid
     private static Logger logger = Logger.getLogger(SpringWebSocketHandler.class);
     static {
         users = new ArrayList<WebSocketSession>();
     }
 
-    public SpringWebSocketHandler() {
-        // TODO Auto-generated constructor stub
+
+    @Override
+    public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
+        System.out.println(webSocketMessage.getPayload());
     }
 
     /**
@@ -46,13 +51,6 @@ public class SpringWebSocketHandler extends TextWebSocketHandler {
         System.out.println("剩余在线用户"+users.size());
     }
 
-    /**
-     * js调用websocket.send时候，会调用该方法
-     */
-    @Override
-    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        super.handleTextMessage(session, message);
-    }
 
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         if(session.isOpen()){session.close();}
