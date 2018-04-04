@@ -153,4 +153,23 @@ public class GirlApplication1 {
 
 //		SpringApplication.run(GirlApplication.class, args);
 	}
+
+
+
+
+
+
+
+
+
+//	public  void dosonmething(Object o){
+//		if(o =  根){
+//			System.out.println(o);
+//			for(遍历根的子节点) {
+//				dosonmething(子节点);
+//			}
+//		}esle{
+//			System.out.println();
+//		}
+//	}
 }
