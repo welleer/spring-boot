@@ -2,6 +2,10 @@ package com.liwei2018.liwei0408;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by dell on 2018/4/8.
@@ -12,8 +16,43 @@ public class SwapInteger {
         Integer b = 2;
         System.out.println("before----a:"+a+",b:"+b);
         //交换
-        swap(a,b);
+//        swap(a,b);
         System.out.println("after----a:"+a+",b:"+b);
+
+        int h;
+        String key = "liwei";
+        System.out.println((key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16));
+        System.out.println("102987421----------------");
+        System.out.println("---------------"+ (h = key.hashCode()));
+        System.out.println("---------------"+ (h >>> 16));
+        System.out.println("---------------");
+        System.out.println(1<<2);
+        System.out.println(8>>2);
+
+        System.out.println("------------list------------");
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(1);
+        list.add(1);
+        list.add(1);
+        System.out.println(list.get(0));
+        System.out.println(list.toString());
+        System.out.println("------------set------------");
+        HashSet<Object> set = new HashSet<>();
+        set.add(null);
+        set.add(null);
+        set.add(1);
+        set.add(1);
+        set.add(2);
+        set.add("3");
+//        System.out.println(set);
+        System.out.println(set.toString());
+        System.out.println("-----------map-------------");
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put("test",null);
+        map.put(null,null);
+        map.put(null,null);
+        map.put("null",null);
+        System.out.println(map.toString());
     }
 
     private static void swap(Integer a, Integer b) {

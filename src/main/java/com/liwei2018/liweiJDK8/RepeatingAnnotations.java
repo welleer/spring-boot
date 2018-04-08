@@ -34,6 +34,7 @@ public class RepeatingAnnotations {
 
     @Filter( value="filter1",value2="111" )
     @Filter( value="filter2", value2="222")
+    @Filter( value="filter3", value2="333")
     //@Filters({@Filter(  value="filter1",value2="111" ),@Filter(  value="filter2", value2="222")}).注意：JDK8之前：1.没有@Repeatable2.采用本行“注解容器”写法
     public interface Filterable {
     }

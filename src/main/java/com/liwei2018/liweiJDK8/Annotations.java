@@ -32,5 +32,8 @@ public class Annotations {
     public static void main(String[] args) {
         final Holder< String > holder = new @NonEmpty Holder< String >();
         @NonEmpty Collection< @NonEmpty String > strings = new ArrayList<>();
+        strings.add("1");
+        System.out.println(holder);
+        System.out.println(strings);
     }
 }
