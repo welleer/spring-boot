@@ -2,7 +2,6 @@ package com.liwei2018.liwei0404;
 
 import org.springframework.cglib.proxy.Enhancer;
 
-import java.lang.reflect.Proxy;
 
 /**
  * cglib动态代理
@@ -11,9 +10,9 @@ import java.lang.reflect.Proxy;
 public class Client3cglib {
     public static void main(String[] args) {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(RealSubject.class);
+        enhancer.setSuperclass(RealSubject2.class);
         enhancer.setCallback(new DemoMethodInterceptor());
-        Subject subject = (Subject) enhancer.create();
+        RealSubject2 subject = (RealSubject2) enhancer.create();
         subject.request();
     }
 }
